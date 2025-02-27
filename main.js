@@ -57,9 +57,24 @@ function warmup2() {
     });
   });
 }
-
+warmup3();
 function warmup3() {
   let student = getStudentJSON();
+  const convert = JSON.parse(student);
+  console.log(convert);
+  document.querySelector("#button-3b").addEventListener("click", function () {
+    document.querySelector(
+      "#content-3"
+    ).innerHTML = `<h2>${convert.firstname}</h2>`;
+    css();
+  });
+  function css() {
+    if (convert.isGraduated == true) {
+      document.getElementById("content-3").classList.add("graduated");
+    } else {
+      document.getElementById("content-3").classList.add("not-graduated");
+    }
+  }
 }
 
 function warmup4() {
