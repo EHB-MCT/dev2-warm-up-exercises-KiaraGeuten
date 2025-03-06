@@ -77,8 +77,33 @@ function warmup3() {
   }
 }
 
+warmup4();
 function warmup4() {
   let main, min, max;
+  const URL =
+    "https://api.openweathermap.org/data/2.5/weather?q=Brussels&APPID=d7b955c4c268fe54649d6f0d702b39d1&units=metric";
+
+  document.querySelector("#button-4a").addEventListener("click", function () {
+    fetch(URL)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data);
+        main = data.main.temp;
+        min = data.main.temp_min;
+        max = data.main.temp_max;
+      });
+  });
+
+  document
+    .querySelector("#button-4b")
+    .addEventListener("click", function (item) {
+      document.querySelector("#content-4").innerHTML = `
+      <h2>Temp: ${main}<h2>
+      <h2>MIn temp:${min} <h2> 
+      <h2>Max temp:${max} <h2>  `;
+    });
 }
 
 function warmup5() {}
